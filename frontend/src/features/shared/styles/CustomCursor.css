@@ -1,0 +1,21 @@
+#s-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--accent, #e8ff00);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background 0.3s;
+  mix-blend-mode: difference;
+}
+
+#s-cursor.big {
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: 1px solid var(--accent, #e8ff00);
+}

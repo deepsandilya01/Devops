@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Studio Void — Creative Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0c0c0c;
+  --surface:#141414;
+  --border:#242424;
+  --accent:#a78bfa;
+  --accent2:#f0abfc;
+  --text:#f5f5f5;
+  --muted:#737373;
+  --card:#181818;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;cursor:none}
+.cursor{width:10px;height:10px;background:var(--accent);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform 0.1s;mix-blend-mode:difference}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.1em;color:var(--text)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-tag{border:1px solid var(--border);color:var(--muted);padding:0.45rem 1.1rem;border-radius:100px;font-size:0.75rem;text-decoration:none;transition:all 0.2s;letter-spacing:0.05em}
+.nav-tag:hover{border-color:var(--accent);color:var(--accent)}
+
+/* hero */
+.hero{min-height:100vh;padding:10rem 4rem 4rem;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:1px solid var(--border)}
+.hero-eyebrow{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--accent)}
+.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,14vw,13rem);line-height:0.92;letter-spacing:-0.01em;color:var(--text);margin-bottom:3rem}
+.hero-headline .outline{-webkit-text-stroke:1px var(--muted);color:transparent}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;padding-top:2rem;border-top:1px solid var(--border)}
+.hero-desc{max-width:400px;font-size:0.9rem;color:var(--muted);line-height:1.8;font-weight:300}
+.hero-cta{display:flex;flex-direction:column;align-items:flex-end;gap:1rem}
+.cta-btn{display:inline-flex;align-items:center;gap:0.75rem;background:var(--accent);color:var(--bg);padding:1rem 2.5rem;border-radius:100px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:transform 0.2s,opacity 0.2s}
+.cta-btn:hover{transform:scale(1.03);opacity:0.92}
+.hero-scroll{font-size:0.72rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase}
+
+/* marquee */
+.marquee-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 0;background:var(--surface)}
+.marquee-inner{display:flex;gap:3rem;white-space:nowrap;animation:marquee 20s linear infinite}
+.marquee-item{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;color:var(--muted)}
+.marquee-item.accent{color:var(--accent)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* work */
+.work{padding:6rem 4rem;max-width:1400px;margin:0 auto}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem}
+.section-num{font-size:0.72rem;color:var(--muted);letter-spacing:0.15em}
+h2.section-title{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:0.02em}
+.view-all{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;border-bottom:1px solid var(--border);padding-bottom:2px}
+.view-all:hover{color:var(--accent);border-color:var(--accent)}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.work-card{position:relative;overflow:hidden;border-radius:12px;background:var(--card);border:1px solid var(--border);aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;cursor:none;transition:border-color 0.3s}
+.work-card:hover{border-color:var(--accent)}
+.work-card.tall{aspect-ratio:3/4}
+.work-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:8rem;color:var(--border);transition:color 0.3s}
+.work-card:hover .work-bg{color:rgba(167,139,250,0.1)}
+.work-info{position:relative;z-index:1}
+.work-cat{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem}
+.work-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.03em;margin-bottom:0.25rem}
+.work-year{font-size:0.75rem;color:var(--muted)}
+
+/* services */
+.services{padding:6rem 4rem;border-top:1px solid var(--border)}
+.services-inner{max-width:1400px;margin:0 auto}
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem}
+.service-item{padding:2.5rem;border:1px solid var(--border);transition:background 0.2s}
+.service-item:hover{background:var(--surface)}
+.service-num{font-size:0.7rem;color:var(--accent);letter-spacing:0.2em;margin-bottom:1rem}
+.service-name{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.03em;margin-bottom:0.75rem}
+.service-desc{font-size:0.83rem;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* team */
+.team{padding:6rem 4rem;border-top:1px solid var(--border)}
+.team-inner{max-width:1400px;margin:0 auto}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem}
+.team-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color 0.2s}
+.team-card:hover{border-color:var(--accent)}
+.team-photo{height:200px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--border)}
+.team-info{padding:1.25rem}
+.team-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.03em;margin-bottom:2px}
+.team-role{font-size:0.75rem;color:var(--muted)}
+
+/* contact */
+.contact{padding:8rem 4rem;border-top:1px solid var(--border);text-align:center}
+.contact-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,10vw,8rem);line-height:1;letter-spacing:-0.01em;margin-bottom:2rem}
+.contact-headline .outline{-webkit-text-stroke:1px var(--muted);color:transparent}
+.contact-email{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,4vw,3rem);color:var(--accent);text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:4px;letter-spacing:0.03em;transition:opacity 0.2s;margin-bottom:3rem}
+.contact-email:hover{opacity:0.7}
+.contact-socials{display:flex;justify-content:center;gap:1.5rem}
+.social-link{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.social-link:hover{color:var(--text)}
+
+footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links,.nav-tag{display:none}
+  .hero{padding:7rem 1.5rem 3rem}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:2rem}
+  .hero-cta{align-items:flex-start}
+  .work{padding:4rem 1.5rem}
+  .work-grid{grid-template-columns:1fr}
+  .services{padding:4rem 1.5rem}
+  .services-grid{grid-template-columns:1fr}
+  .team{padding:4rem 1.5rem}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .contact{padding:5rem 1.5rem}
+  footer{flex-direction:column;gap:0.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <div class="nav-logo">Studio Void</div>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-tag">Start a project</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Creative & Digital Agency — Est. 2019</div>
+  <div class="hero-headline">
+    We make<br>brands <span class="outline">that</span><br>matter.
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-desc">Studio Void is a creative agency building identities, digital experiences, and campaigns for brands that dare to be different.</p>
+    <div class="hero-cta">
+      <a href="#work" class="cta-btn">View our work →</a>
+      <span class="hero-scroll">↓ Scroll to explore</span>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span class="marquee-item">Brand Identity</span><span class="marquee-item accent">✦</span>
+    <span class="marquee-item">Web Design</span><span class="marquee-item accent">✦</span>
+    <span class="marquee-item">Motion</span><span class="marquee-item accent">✦</span>
+    <span class="marquee-item">Strategy</span><span class="marquee-item accent">✦</span>
+    <span class="marquee-item">Photography</span><span class="marquee-item accent">✦</span>
+    <span class="marquee-item">Brand Identity</span><span class="marquee-item accent">✦</span>
+    <span class="marquee-item">Web Design</span><span class="marquee-item accent">✦</span>
+    <span class="marquee-item">Motion</span><span class="marquee-item accent">✦</span>
+    <span class="marquee-item">Strategy</span><span class="marquee-item accent">✦</span>
+    <span class="marquee-item">Photography</span><span class="marquee-item accent">✦</span>
+  </div>
+</div>
+
+<div class="work" id="work">
+  <div class="section-header">
+    <div>
+      <div class="section-num">01 — Selected work</div>
+      <h2 class="section-title">Recent projects</h2>
+    </div>
+    <a href="#" class="view-all">View all work</a>
+  </div>
+  <div class="work-grid">
+    <div class="work-card tall">
+      <div class="work-bg">V</div>
+      <div class="work-info">
+        <div class="work-cat">Brand Identity · Web</div>
+        <div class="work-title">Volta Electric</div>
+        <div class="work-year">2025</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.5rem">
+      <div class="work-card">
+        <div class="work-bg">M</div>
+        <div class="work-info">
+          <div class="work-cat">Digital Campaign</div>
+          <div class="work-title">Mōda Fashion</div>
+          <div class="work-year">2025</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-bg">A</div>
+        <div class="work-info">
+          <div class="work-cat">Web Design · Motion</div>
+          <div class="work-title">Apex Ventures</div>
+          <div class="work-year">2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="services" id="services">
+  <div class="services-inner">
+    <div class="section-num">02 — What we do</div>
+    <h2 class="section-title">Services</h2>
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-num">01</div>
+        <div class="service-name">Brand Identity</div>
+        <div class="service-desc">Logos, visual systems, brand guidelines and everything you need to show up consistently across every touchpoint.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">02</div>
+        <div class="service-name">Web Design & Dev</div>
+        <div class="service-desc">Award-worthy websites built for performance. From marketing pages to full digital platforms with custom CMS.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">03</div>
+        <div class="service-name">Motion & Film</div>
+        <div class="service-desc">Brand films, social content, and motion graphics that make your audience stop scrolling.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">04</div>
+        <div class="service-name">Campaign Strategy</div>
+        <div class="service-desc">Creative strategy that connects your brand to culture. Ideas first, execution second.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="team" id="team">
+  <div class="team-inner">
+    <div class="section-num">03 — The people</div>
+    <h2 class="section-title">Our team</h2>
+    <div class="team-grid">
+      <div class="team-card"><div class="team-photo">J</div><div class="team-info"><div class="team-name">Jordan Lee</div><div class="team-role">Creative Director</div></div></div>
+      <div class="team-card"><div class="team-photo">S</div><div class="team-info"><div class="team-name">Sam Reyes</div><div class="team-role">Lead Designer</div></div></div>
+      <div class="team-card"><div class="team-photo">M</div><div class="team-info"><div class="team-name">Maya Patel</div><div class="team-role">Developer</div></div></div>
+      <div class="team-card"><div class="team-photo">C</div><div class="team-info"><div class="team-name">Chris Wong</div><div class="team-role">Strategy</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="contact" id="contact">
+  <div class="contact-headline">Let's build<br>something <span class="outline">great.</span></div>
+  <a href="mailto:hello@studiovoid.co" class="contact-email">hello@studiovoid.co</a>
+  <div class="contact-socials">
+    <a href="#" class="social-link">Instagram</a>
+    <a href="#" class="social-link">Twitter</a>
+    <a href="#" class="social-link">LinkedIn</a>
+    <a href="#" class="social-link">Dribbble</a>
+  </div>
+</div>
+
+<footer>
+  <span>© 2025 Studio Void</span>
+  <span>Privacy Policy</span>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor');
+document.addEventListener('mousemove',e=>{cursor.style.left=(e.clientX-5)+'px';cursor.style.top=(e.clientY-5)+'px'});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+.switch-wrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: -100vh;
+  z-index: 999998;
+  pointer-events: none;
+}
+
+.parts {
+  height: 100vh;
+  width: 15vw;
+  background: #e8ff00;
+}
+
+.whole-cover {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  background: #e8ff00;
+  z-index: 999999;
+  pointer-events: none;
+  -webkit-mask-size: cover;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  padding-right: 4rem;
+}
+
+/* Morph Effect: Blur + Threshold */
+.morph-container {
+  position: relative;
+  font-size: clamp(3rem, 10vw, 10rem);
+  font-weight: 700;
+  filter: url(#threshold);
+  user-select: none;
+  margin-bottom: 2rem;
+}
+
+.word-rotator {
+  position: relative;
+  height: 1.2em;
+  width: 100%;
+  min-width: 10ch;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.morph-word {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  /* Align right instead of center to match the previous bottom-right positioning */
+  transform: translateY(-50%);
+  opacity: 0;
+  color: #000;
+  white-space: nowrap;
+  animation: rotate-words 4.5s infinite ease-in-out;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.morph-word:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.morph-word:nth-child(2) {
+  animation-delay: 1.5s;
+}
+
+.morph-word:nth-child(3) {
+  animation-delay: 3.0s;
+}
+
+@keyframes rotate-words {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translateY(-50%) scale(0.8);
+  }
+
+  5% {
+    opacity: 0.5;
+    filter: blur(10px);
+  }
+
+  15%,
+  35% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(-50%) scale(1);
+  }
+
+  45% {
+    opacity: 0.5;
+    filter: blur(10px);
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translateY(-50%) scale(1.2);
+  }
+}

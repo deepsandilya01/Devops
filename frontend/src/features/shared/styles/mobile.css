@@ -1,0 +1,745 @@
+/* =============================================
+   MOBILE RESPONSIVE OVERRIDES — ALL PAGES
+   Covers: Navbar, Dashboard, Deploy, Projects,
+           Settings, Auth (Login/Register), Home
+   ============================================= */
+
+/* ── 1. Navbar Mobile ───────────────────────── */
+@media (max-width: 768px) {
+  /* Logo repositioning */
+  nav.shared-nav > div[style*="position: 'absolute'"],
+  nav.shared-nav > div[style*="position:absolute"],
+  nav.shared-nav > div:first-child {
+    top: 1.2rem !important;
+    left: 1.2rem !important;
+    font-size: 1.8rem !important;
+  }
+
+  .small-nav {
+    height: 5rem;
+    justify-content: flex-end;
+  }
+
+  /* Hide theme switcher and non-menu buttons on mobile */
+  .small-nav .theme-switcher,
+  .small-nav .nav-container-small,
+  .small-nav .nav-container-medium {
+    display: none !important;
+  }
+
+  .small-nav .nav-container-large {
+    width: 6.5rem !important;
+    height: 100% !important;
+    justify-content: center !important;
+    padding-left: 1.2rem !important;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 25px 100%, 0 75%) !important;
+  }
+
+  .small-nav .nav-cont h4.menu-text {
+    display: none !important;
+  }
+
+  .hamburger-icon {
+    display: flex !important;
+    margin-right: 0.5rem;
+  }
+
+  .nav-logo-wrap {
+    top: 1.4rem !important;
+    left: 1.2rem !important;
+    transform: scale(0.65) !important;
+    transform-origin: left top !important;
+  }
+
+  /* Projects Page Mobile */
+  .projects-main {
+    padding: 0 1rem !important;
+    padding-top: 5rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .dash-card {
+    clip-path: none !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    box-sizing: border-box !important;
+  }
+
+  .projects-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .projects-header-left {
+    min-width: 100% !important;
+  }
+
+  .projects-header-left h1 {
+    font-size: 2.2rem !important;
+  }
+
+  .projects-controls {
+    width: 100% !important;
+    flex-wrap: wrap !important;
+    gap: 0.8rem !important;
+    margin-top: 0 !important;
+  }
+
+  .projects-search-wrap {
+    width: 100% !important;
+    max-width: none !important;
+    flex: 1 1 100% !important;
+  }
+
+  .projects-view-toggle {
+    display: none !important; /* Hide view toggle on mobile, stick to grid/vertical list */
+  }
+
+  .projects-filter-wrap {
+    flex: 1 !important;
+  }
+
+  .projects-filter-btn {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  .new-project-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    order: -1 !important; /* Move to top of controls on mobile */
+    margin-bottom: 0.5rem !important;
+  }
+
+  .projects-stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .projects-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .project-card {
+    padding: 1.25rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .project-card > div:first-child h3 {
+    font-size: 1rem !important;
+  }
+
+  .project-card p {
+    font-size: 0.8rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .small-nav .nav-container-medium {
+    display: none; /* Hide "Projects" text nav button on very small screens */
+  }
+
+  .small-nav .nav-container-small {
+    width: 8rem;
+  }
+
+  .small-nav .nav-container-large {
+    width: 7rem;
+  }
+}
+
+/* ── 2. Dashboard Page ─────────────────────── */
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding-top: 5rem;
+  }
+
+  .dashboard-container {
+    padding: 2rem 1rem 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Hero ticket card — stack vertically */
+  .ticket-main {
+    flex-direction: column !important;
+    padding: 2rem 1.5rem !important;
+    clip-path: none !important;
+    gap: 1.5rem !important;
+  }
+
+  .ticket-main h1 {
+    font-size: 2rem !important;
+  }
+
+  /* HUD orbital graphic — hide on mobile to save space */
+  .ticket-main > div:nth-child(3) {
+    display: none;
+  }
+
+  /* Metrics grid — 2 columns on mobile */
+  .dash-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  
+  .dash-metrics-grid > div > div {
+    padding: 1.2rem !important;
+  }
+
+  .dash-metrics-grid div[style*="fontSize: \"2.5rem\""] {
+    font-size: 1.8rem !important;
+  }
+
+  /* Lower layout — single column */
+  .dash-lower-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .dash-chart-card,
+  .dash-resource-card {
+    padding: 1.25rem !important;
+  }
+
+  .dash-resource-section {
+    gap: 1rem !important;
+  }
+
+  /* Header row — stack on mobile */
+  .dash-fade-in[style*="justifyContent: \"space-between\""][style*="alignItems: \"center\""] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Search bar — full width */
+  .dash-fade-in[style*="position: \"relative\""][style*="maxWidth: \"400px\""] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Disable GSAP scroll listeners intensive effects */
+  .deploy-bg-canvas {
+    /* Keep visible */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Metrics — single column on very small screens */
+  .dash-fade-in[style*="gridTemplateColumns: \"repeat"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ticket-main h1 {
+    font-size: 1.6rem !important;
+  }
+
+  .ticket-main p {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ── 3. Projects Page ─────────────────────── */
+@media (max-width: 768px) {
+  .dash-main {
+    padding: 0 1rem !important;
+    padding-bottom: 4rem !important;
+    margin: 0 !important;
+  }
+
+  /* Header — stack controls */
+  .dash-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    padding-top: 1rem !important;
+  }
+
+  .dash-header-left {
+    min-width: auto !important;
+    width: 100% !important;
+  }
+
+  .dash-title {
+    font-size: 2.5rem !important;
+  }
+
+  /* Controls row — wrap */
+  .dash-header > div:last-child {
+    flex-wrap: wrap !important;
+    gap: 0.7rem !important;
+    margin-top: 0.5rem !important;
+    width: 100% !important;
+  }
+
+  /* Search — full width */
+  .dash-header div[style*="width: \"260px\""] {
+    width: 100% !important;
+  }
+
+  /* Stats grid — 2 columns */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  /* Project cards — single column */
+  .dash-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* New project button — full width */
+  .new-project-btn {
+    margin-left: 0 !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .dash-title {
+    font-size: 2rem !important;
+  }
+}
+
+/* ── 4. Deploy Page ───────────────────────── */
+@media (max-width: 768px) {
+  /* Tab navigation — scrollable horizontally */
+  .deploy-tabs,
+  main[class*="dash-main"] div[style*="display: 'flex'"][style*="gap: '1.5rem'"][style*="borderBottom"] {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap !important;
+    gap: 1rem !important;
+    padding-bottom: 0.8rem !important;
+  }
+
+  .deploy-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Deployment details card — flex-col */
+  div[style*="flex: '1 1 300px'"] {
+    flex-basis: 100% !important;
+  }
+
+  /* Pipeline steps — scroll horizontally on mobile */
+  div[style*="justifyContent: \"space-between\""][style*="padding: \"2rem\""][style*="borderRadius: \"12px\""] {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem !important;
+    padding: 1.5rem 1rem !important;
+  }
+
+  /* Right-side info grid — single column */
+  div[style*="flex: '2 1 400px'"] {
+    flex-basis: 100% !important;
+  }
+
+  /* Log terminal — reduce height on mobile */
+  div[style*="height: \"400px\""] {
+    height: 280px !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Header buttons row — wrap */
+  div[style*="display: 'flex'"][style*="gap: '0.5rem'"][style*="dash-btn"] {
+    flex-wrap: wrap !important;
+  }
+}
+
+/* ── 5. Settings Page ─────────────────────── */
+@media (max-width: 768px) {
+  /* Settings cards — single column, no side border */
+  .dash-card[style*="display: 'flex'"][style*="flexWrap: 'wrap'"] {
+    flex-direction: column !important;
+  }
+
+  .dash-card div[style*="flex: '1 1 300px'"][style*="borderRight"] {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  }
+
+  /* Domain / access control rows — stack */
+  div[style*="display: 'flex'"][style*="gap: '1rem'"][style*="marginBottom: '2rem'"] {
+    flex-direction: column !important;
+  }
+
+  div[style*="width: \"120px\""] {
+    width: 100% !important;
+  }
+
+  /* Env var rows — stack on very small */
+  div[style*="display: \"flex\""][style*="gap: \"1rem\""][style*="alignItems: \"center\""] {
+    flex-wrap: wrap !important;
+  }
+
+  /* Settings header */
+  .dash-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+
+  .dash-header .dash-btn-outline {
+    align-self: flex-start;
+  }
+}
+
+/* ── 6. Auth Pages (Login / Register) ────── */
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column !important;
+  }
+
+  .auth-left {
+    min-height: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    padding: 2rem !important;
+  }
+
+  .auth-left-content {
+    padding-bottom: 0.5rem;
+  }
+
+  .auth-right {
+    padding: 2rem 1.5rem !important;
+  }
+
+  .auth-tagline {
+    font-size: clamp(2rem, 10vw, 3.5rem) !important;
+  }
+
+  .auth-return-btn {
+    top: 1.2rem !important;
+    left: 1.2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-right {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .auth-form-wrap {
+    max-width: 100% !important;
+  }
+}
+
+/* ── 7. Home Page ────────────────────────── */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(3rem, 14vw, 7rem) !important;
+  }
+
+  .nav-links {
+    display: none !important; /* Hidden behind the hamburger (big-nav) on mobile */
+  }
+
+  .nav {
+    padding: 0 1rem !important;
+    flex-wrap: wrap !important;
+    height: auto !important;
+    min-height: 4rem !important;
+  }
+
+  .hero-sub {
+    font-size: 0.9rem !important;
+  }
+
+  .process-stage {
+    grid-template-columns: 1fr !important;
+  }
+
+  .values-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .manifesto-big {
+    font-size: clamp(2rem, 9vw, 4rem) !important;
+  }
+
+  .manifesto {
+    flex-direction: column !important;
+  }
+
+  .srv-hover-img {
+    display: none !important; /* Remove hover image on touch */
+  }
+
+  .marquee-transition-wrap {
+    overflow: hidden;
+  }
+
+  .cta-buttons-wrap {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    width: 100% !important;
+  }
+
+  .cta-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(2.5rem, 12vw, 5rem) !important;
+  }
+}
+
+/* ── 8. Admin Dashboard ──────────────────── */
+@media (max-width: 768px) {
+  /* Admin page grid — stack to single column */
+  div.admin-grid,
+  div[class*="admin"] div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── 9. Generate Website Page ────────────── */
+@media (max-width: 768px) {
+  .generate-main,
+  main[style*="maxWidth: '1500px'"] {
+    padding: 0 1rem !important;
+  }
+}
+
+/* ── 10. Global Performance Tweaks ──────── */
+
+/* Use GPU layer for animated elements */
+.noise-overlay,
+.big-nav,
+.small-nav,
+.auth-page .auth-liquid,
+.dash-card {
+  will-change: transform;
+}
+
+/* Reduce animation cost on mobile */
+@media (max-width: 768px) {
+  /* Stop the expensive noise overlay animation on mobile */
+  .noise-overlay {
+    animation: none !important;
+  }
+
+  /* Disable GSAP scroll listeners intensive effects */
+  .deploy-bg-canvas {
+    /* Keep visible */
+  }
+
+  /* Reduce backdrop blur cost on mobile */
+  .big-nav {
+    backdrop-filter: none !important;
+  }
+
+  /* Prevent clip-path on mobile for better performance */
+  .ticket-main {
+    clip-path: none !important;
+  }
+
+  /* Generate Website Mobile Styles */
+  .gen-main {
+    padding: 1rem !important;
+    padding-top: 5rem !important;
+  }
+
+  .gen-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .gen-pipeline {
+    gap: 0.5rem !important;
+    padding: 0.8rem 1rem !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    justify-content: flex-start !important;
+  }
+
+  .gen-pipeline > span {
+    font-size: 0.7rem !important;
+  }
+
+  .gen-template-split {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+
+  .gen-template-list {
+    max-height: 400px !important;
+    order: 2;
+  }
+
+  .gen-preview-wrap {
+    height: 300px !important;
+    order: 1;
+    margin-bottom: 1rem;
+  }
+
+  .gen-preview-wrap iframe {
+    pointer-events: none; /* Disable interaction on small previews to allow scrolling page */
+  }
+
+  .gen-card {
+    padding: 1rem !important;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .noise-overlay {
+    animation: none !important;
+  }
+}
+
+/* ── 11. Touch device improvements ────────── */
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+  /* Remove hover effects that don't work on touch */
+  .srv-hover-img {
+    display: none !important;
+  }
+
+  /* Make tap targets bigger */
+  .theme-dot {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .big-nav__link {
+    padding: 0.9rem 0 !important;
+  }
+
+  /* Remove scroll listening on touch */
+  .small-nav {
+    transition: none !important;
+  }
+
+  /* ── Kill all hover effects on Home, Login, Register ── */
+
+  /* Home page — complete suppression of glowing text, transforms, and hover layers */
+  .hero-hover-word:hover,
+  .hero-yellow:hover,
+  .magnetic-btn:hover,
+  .nav-cta:hover,
+  .nav-logo:hover,
+  .theme-dot:hover,
+  .process-step:hover,
+  .value-card:hover,
+  .srv-row:hover,
+  .footer-logo:hover span {
+    transform: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    color: inherit !important;
+    animation: none !important;
+    background: inherit !important;
+    border-color: inherit !important;
+  }
+
+  .hero-yellow {
+    color: var(--accent) !important;
+  }
+
+  .text-effect-container:hover > .step-hover-layer,
+  .value-effect-container:hover > .value-hover-layer {
+    clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%) !important;
+  }
+
+  .nav-cta::before {
+    display: none !important;
+  }
+
+  .process-step:hover .step-icon,
+  .process-step:hover .step-num,
+  .process-step:hover .step-title {
+    transform: none !important;
+    color: inherit !important;
+  }
+
+  /* Auth pages — form inputs, buttons, links */
+  .auth-page a:hover,
+  .auth-page button:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  .auth-form-wrap input:hover {
+    border-color: rgba(255,255,255,0.1) !important;
+  }
+
+  /* Global — disable all hover transforms on cards/buttons */
+  .dash-card:hover,
+  .project-card:hover,
+  .stats-card:hover {
+    transform: none !important;
+  }
+
+  /* Custom cursor — pointless on touch */
+  .custom-cursor,
+  .custom-cursor-wrap,
+  #custom-cursor {
+    display: none !important;
+  }
+}
+
+/* ── 12. Scrollbar styling (performance) ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+
+/* ── 13. Image optimization hints ────────── */
+img {
+  content-visibility: auto;
+}
+
+/* ── 14. Font display optimization ────────── */
+/* Ensure fonts don't block rendering */
+@font-face {
+  font-display: swap;
+}

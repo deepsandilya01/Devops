@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Margin — A blog by Priya Sharma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#fffbf6;
+  --surface:#fff8ef;
+  --border:#fde68a;
+  --border2:#e7c97e;
+  --accent:#92400e;
+  --accent2:#d97706;
+  --text:#1c0f00;
+  --muted:#78614a;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif}
+
+header{border-bottom:1.5px solid var(--border);padding:1.5rem 5%;display:flex;justify-content:space-between;align-items:center}
+.site-title{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:-0.02em}
+.site-tagline{font-size:0.75rem;color:var(--muted);margin-top:2px}
+.header-nav{display:flex;gap:2rem;list-style:none;align-items:center}
+.header-nav a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
+.header-nav a:hover{color:var(--accent)}
+.subscribe-btn{background:var(--accent);color:#fff;padding:0.5rem 1.2rem;border-radius:6px;font-size:0.82rem;text-decoration:none;transition:opacity 0.2s;font-family:'DM Sans',sans-serif}
+.subscribe-btn:hover{opacity:0.85}
+
+/* hero post */
+.hero-post{padding:3rem 5%;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;border-bottom:1px solid var(--border)}
+.hero-img{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:3rem;color:var(--border2)}
+.hero-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem}
+.category{background:var(--surface);border:1px solid var(--border);color:var(--accent2);padding:0.25rem 0.75rem;border-radius:100px;font-size:0.72rem;font-weight:500}
+.post-date{font-size:0.75rem;color:var(--muted)}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;line-height:1.2;letter-spacing:-0.02em;margin-bottom:1rem;color:var(--text)}
+.hero-excerpt{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:1.5rem}
+.read-link{color:var(--accent);text-decoration:none;font-size:0.85rem;font-weight:500;display:inline-flex;align-items:center;gap:0.4rem;border-bottom:1.5px solid var(--border2);padding-bottom:1px;transition:border-color 0.2s}
+.read-link:hover{border-color:var(--accent)}
+.author-row{display:flex;align-items:center;gap:0.75rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.author-avatar{width:36px;height:36px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:0.85rem}
+.author-name{font-size:0.85rem;font-weight:500}
+.author-role{font-size:0.75rem;color:var(--muted)}
+
+/* main layout */
+.main-layout{padding:3rem 5%;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 320px;gap:3rem}
+
+/* post list */
+.post-list{display:flex;flex-direction:column;gap:0}
+.post-item{padding:2rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 160px;gap:2rem;align-items:start}
+.post-item:last-child{border-bottom:none}
+.post-category{font-size:0.7rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent2);margin-bottom:0.5rem}
+.post-title{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;line-height:1.3;letter-spacing:-0.01em;margin-bottom:0.6rem;color:var(--text)}
+.post-title a{text-decoration:none;color:inherit;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{font-size:0.83rem;color:var(--muted);line-height:1.7;margin-bottom:0.75rem}
+.post-foot{display:flex;gap:1rem;align-items:center;font-size:0.75rem;color:var(--muted)}
+.post-thumb{background:var(--surface);border:1px solid var(--border);border-radius:8px;aspect-ratio:4/3}
+
+/* sidebar */
+.sidebar{display:flex;flex-direction:column;gap:2rem}
+.sidebar-block{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:1.5rem}
+.sidebar-title{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:1.25rem}
+.about-text{font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.about-avatar{width:64px;height:64px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;margin-bottom:1rem}
+.subscribe-form{display:flex;flex-direction:column;gap:0.75rem}
+.subscribe-form input{padding:0.6rem 0.9rem;border:1.5px solid var(--border);border-radius:6px;font-size:0.83rem;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
+.subscribe-form input:focus{border-color:var(--accent2)}
+.subscribe-form button{padding:0.65rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:0.83rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity 0.2s}
+.subscribe-form button:hover{opacity:0.85}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:0.5rem}
+.tag{padding:0.3rem 0.8rem;border:1px solid var(--border);border-radius:100px;font-size:0.75rem;color:var(--muted);text-decoration:none;transition:all 0.2s}
+.tag:hover{border-color:var(--accent2);color:var(--accent)}
+.recent-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.recent-item{padding:0.75rem 0;border-bottom:1px solid var(--border);font-size:0.82rem}
+.recent-item:last-child{border-bottom:none}
+.recent-item a{text-decoration:none;color:var(--text);font-family:'Fraunces',serif;font-weight:600;line-height:1.3;transition:color 0.2s}
+.recent-item a:hover{color:var(--accent)}
+.recent-item span{display:block;font-size:0.72rem;color:var(--muted);margin-top:3px}
+
+footer{background:var(--surface);border-top:1.5px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;color:var(--muted)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--accent)}
+
+@media(max-width:768px){
+  .hero-post{grid-template-columns:1fr}
+  .hero-img{display:none}
+  .main-layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .post-item{grid-template-columns:1fr}
+  .post-thumb{display:none}
+  footer{flex-direction:column;gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="site-title">The Margin</div>
+    <div class="site-tagline">Essays on design, code & the creative life</div>
+  </div>
+  <nav>
+    <ul class="header-nav">
+      <li><a href="#">Writing</a></li>
+      <li><a href="#">Topics</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#" class="subscribe-btn">Subscribe</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="hero-post">
+  <div class="hero-img">✍</div>
+  <div>
+    <div class="hero-meta">
+      <span class="category">Design</span>
+      <span class="post-date">May 1, 2025 · 8 min read</span>
+    </div>
+    <h1 class="hero-title">The quiet art of designing for slow reading</h1>
+    <p class="hero-excerpt">In a world of infinite scroll and dopamine loops, choosing to design for patience and depth feels almost radical. Here's what I've learned from a year of intentional typography.</p>
+    <a href="#" class="read-link">Read the full essay →</a>
+    <div class="author-row">
+      <div class="author-avatar">PS</div>
+      <div>
+        <div class="author-name">Priya Sharma</div>
+        <div class="author-role">Writer & designer, Mumbai</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-layout">
+  <div class="post-list">
+
+    <article class="post-item">
+      <div>
+        <div class="post-category">Engineering</div>
+        <h2 class="post-title"><a href="#">Why I stopped using TypeScript for side projects</a></h2>
+        <p class="post-excerpt">After years of preaching type safety, I went back to plain JavaScript for my personal tools. Here's what I found.</p>
+        <div class="post-foot">
+          <span>Apr 22, 2025</span><span>·</span><span>6 min read</span><span>·</span><span>2.4k views</span>
+        </div>
+      </div>
+      <div class="post-thumb"></div>
+    </article>
+
+    <article class="post-item">
+      <div>
+        <div class="post-category">Creativity</div>
+        <h2 class="post-title"><a href="#">Constraints are a gift you give yourself</a></h2>
+        <p class="post-excerpt">The blank canvas is terrifying. Rules — even arbitrary ones — are the engine of creative work. A personal essay on creative limits.</p>
+        <div class="post-foot">
+          <span>Apr 10, 2025</span><span>·</span><span>5 min read</span><span>·</span><span>1.8k views</span>
+        </div>
+      </div>
+      <div class="post-thumb"></div>
+    </article>
+
+    <article class="post-item">
+      <div>
+        <div class="post-category">Tools</div>
+        <h2 class="post-title"><a href="#">My 2025 note-taking stack after trying everything</a></h2>
+        <p class="post-excerpt">Roam, Notion, Obsidian, Apple Notes — I've tried them all. Here's the boring setup I finally landed on and why it works.</p>
+        <div class="post-foot">
+          <span>Mar 28, 2025</span><span>·</span><span>7 min read</span><span>·</span><span>5.1k views</span>
+        </div>
+      </div>
+      <div class="post-thumb"></div>
+    </article>
+
+    <article class="post-item">
+      <div>
+        <div class="post-category">Life</div>
+        <h2 class="post-title"><a href="#">On building in public and the cost of the performance</a></h2>
+        <p class="post-excerpt">Building in public is supposed to be authentic. But when the audience arrives, something subtle shifts. A reflection after 18 months of tweeting my work.</p>
+        <div class="post-foot">
+          <span>Mar 14, 2025</span><span>·</span><span>9 min read</span><span>·</span><span>3.3k views</span>
+        </div>
+      </div>
+      <div class="post-thumb"></div>
+    </article>
+
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-block">
+      <div class="about-avatar">P</div>
+      <div class="sidebar-title">About Priya</div>
+      <p class="about-text">I write about design, engineering, and the creative process. Based in Mumbai. Currently building in public at Craft Studio.</p>
+      <a href="#" style="font-size:0.8rem;color:var(--accent);text-decoration:none">Read more about me →</a>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="sidebar-title">Stay in the loop</div>
+      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">New essays every week. No spam, unsubscribe anytime.</p>
+      <div class="subscribe-form">
+        <input type="email" placeholder="you@email.com"/>
+        <button>Subscribe for free</button>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="sidebar-title">Topics</div>
+      <div class="tag-cloud">
+        <a href="#" class="tag">Design</a>
+        <a href="#" class="tag">Engineering</a>
+        <a href="#" class="tag">Creativity</a>
+        <a href="#" class="tag">Tools</a>
+        <a href="#" class="tag">Life</a>
+        <a href="#" class="tag">Writing</a>
+        <a href="#" class="tag">TypeScript</a>
+        <a href="#" class="tag">Productivity</a>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="sidebar-title">Popular posts</div>
+      <ul class="recent-list">
+        <li class="recent-item"><a href="#">My 2025 note-taking stack</a><span>5.1k views · Mar 28</span></li>
+        <li class="recent-item"><a href="#">Why I stopped using TypeScript</a><span>2.4k views · Apr 22</span></li>
+        <li class="recent-item"><a href="#">Building in public and the performance</a><span>3.3k views · Mar 14</span></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span>© 2025 Priya Sharma — The Margin</span>
+  <div class="footer-links">
+    <a href="#">Twitter</a>
+    <a href="#">RSS</a>
+    <a href="#">Privacy</a>
+    <a href="#">Archive</a>
+  </div>
+</footer>
+
+</body>
+</html>

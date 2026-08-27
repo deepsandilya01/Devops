@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kern & Co — Minimal Goods</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#fafaf9;
+  --surface:#f4f4f2;
+  --border:#e8e8e5;
+  --accent:#1a1a1a;
+  --accent2:#6b6b6b;
+  --text:#1a1a1a;
+  --muted:#9a9a9a;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300}
+
+nav{padding:1.5rem 5%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;letter-spacing:0.05em}
+.nav-center{display:flex;gap:2.5rem;list-style:none}
+.nav-center a{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s}
+.nav-center a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-icon{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:color 0.2s;background:none;border:none;font-family:'Jost',sans-serif;font-weight:300}
+.nav-icon:hover{color:var(--text)}
+.cart-count{background:var(--text);color:var(--bg);font-size:0.65rem;border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;margin-left:4px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:70vh;border-bottom:1px solid var(--border)}
+.hero-text{padding:5rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)}
+.hero-eyebrow{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:400;line-height:1.1;letter-spacing:-0.01em;margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--muted)}
+.hero-desc{font-size:0.88rem;color:var(--muted);line-height:1.8;max-width:340px;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem}
+.btn-solid{background:var(--text);color:var(--bg);padding:0.85rem 2rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;font-family:'Jost',sans-serif;font-weight:400}
+.btn-solid:hover{opacity:0.85}
+.btn-line{border:1px solid var(--border);color:var(--text);padding:0.85rem 2rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:border-color 0.2s;font-family:'Jost',sans-serif;font-weight:400}
+.btn-line:hover{border-color:var(--text)}
+.hero-visual{background:var(--surface);display:flex;align-items:center;justify-content:center}
+.hero-img-placeholder{font-family:'Cormorant Garamond',serif;font-size:6rem;color:var(--border)}
+
+/* announce */
+.announce{background:var(--text);color:var(--bg);text-align:center;padding:0.65rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase}
+
+/* products */
+.products{padding:5rem 5%}
+.products-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5rem}
+.products-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400}
+.filter-row{display:flex;gap:1.5rem}
+.filter-btn{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;font-family:'Jost',sans-serif;transition:color 0.2s;padding:0}
+.filter-btn.active,.filter-btn:hover{color:var(--text)}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.product-card{cursor:pointer}
+.product-img{background:var(--surface);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--border);margin-bottom:1rem;position:relative;overflow:hidden;transition:background 0.3s}
+.product-card:hover .product-img{background:#eee}
+.product-badge{position:absolute;top:1rem;left:1rem;background:var(--text);color:var(--bg);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.65rem}
+.product-badge.sale{background:#c0392b}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin-bottom:0.25rem}
+.product-type{font-size:0.75rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.5rem}
+.product-price{font-size:0.88rem;display:flex;gap:0.75rem;align-items:center}
+.price-original{color:var(--muted);text-decoration:line-through}
+.price-sale{color:#c0392b}
+.product-add{width:100%;margin-top:0.75rem;padding:0.65rem;border:1px solid var(--border);background:transparent;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'Jost',sans-serif;transition:all 0.2s;color:var(--text)}
+.product-add:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+/* features strip */
+.features-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr)}
+.strip-item{padding:2rem;border-right:1px solid var(--border);text-align:center}
+.strip-item:last-child{border-right:none}
+.strip-icon{font-size:1.25rem;margin-bottom:0.75rem;color:var(--muted)}
+.strip-title{font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem;font-weight:400}
+.strip-desc{font-size:0.75rem;color:var(--muted);line-height:1.5}
+
+/* testimonial */
+.testimonial{padding:6rem 5%;max-width:700px;margin:0 auto;text-align:center}
+.testimonial-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2rem);font-style:italic;font-weight:400;line-height:1.5;margin-bottom:2rem;color:var(--text)}
+.testimonial-author{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted)}
+.stars{color:var(--text);letter-spacing:0.1em;margin-bottom:1rem;font-size:0.8rem}
+
+/* newsletter */
+.newsletter{background:var(--surface);border-top:1px solid var(--border);padding:5rem 5%;text-align:center}
+.newsletter-title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;margin-bottom:0.75rem}
+.newsletter-sub{font-size:0.85rem;color:var(--muted);margin-bottom:2rem}
+.newsletter-form{display:flex;max-width:400px;margin:0 auto;border:1px solid var(--border)}
+.newsletter-form input{flex:1;padding:0.85rem 1rem;background:transparent;border:none;font-size:0.82rem;font-family:'Jost',sans-serif;color:var(--text);outline:none}
+.newsletter-form button{padding:0.85rem 1.5rem;background:var(--text);color:var(--bg);border:none;cursor:pointer;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;font-family:'Jost',sans-serif;transition:opacity 0.2s}
+.newsletter-form button:hover{opacity:0.85}
+
+footer{padding:3rem 5%;border-top:1px solid var(--border);display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.75rem}
+.footer-desc{font-size:0.8rem;color:var(--muted);line-height:1.7}
+.footer-col h4{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem;font-weight:400}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.footer-col a{font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{border-top:1px solid var(--border);padding:1.25rem 5%;display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted)}
+
+/* cart sidebar */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-panel{position:fixed;right:0;top:0;bottom:0;width:380px;background:var(--bg);border-left:1px solid var(--border);z-index:201;transform:translateX(100%);transition:transform 0.3s;display:flex;flex-direction:column}
+.cart-panel.open{transform:translateX(0)}
+.cart-header{padding:1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.cart-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem}
+.cart-close{background:none;border:none;font-size:1.25rem;cursor:pointer;color:var(--muted)}
+.cart-body{flex:1;padding:1.5rem;font-size:0.85rem;color:var(--muted);display:flex;align-items:center;justify-content:center;text-align:center}
+.cart-footer{padding:1.5rem;border-top:1px solid var(--border)}
+.cart-total{display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:1rem}
+.cart-total strong{font-family:'Cormorant Garamond',serif;font-size:1.1rem}
+.checkout-btn{width:100%;padding:1rem;background:var(--text);color:var(--bg);border:none;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'Jost',sans-serif;transition:opacity 0.2s}
+.checkout-btn:hover{opacity:0.85}
+
+@media(max-width:768px){
+  nav{padding:1rem}
+  .nav-center{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .hero-text{padding:3rem 1.5rem}
+  .product-grid{grid-template-columns:1fr 1fr}
+  .features-strip{grid-template-columns:1fr 1fr}
+  footer{grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;gap:0.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="announce">Free shipping on orders over ₹999 — Use code FREESHIP</div>
+
+<nav>
+  <div class="nav-logo">Kern & Co</div>
+  <ul class="nav-center">
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#">Collections</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Journal</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon" onclick="toggleCart()">Cart <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">New collection — Spring 2025</div>
+    <h1 class="hero-title">Objects made<br><em>to last.</em></h1>
+    <p class="hero-desc">Thoughtfully designed everyday objects. Minimal, durable, and made with materials that age beautifully.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-solid">Shop now</a>
+      <a href="#" class="btn-line">Our story</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-img-placeholder">◎</div>
+  </div>
+</div>
+
+<div class="products" id="products">
+  <div class="products-header">
+    <div class="products-title">New arrivals</div>
+    <div class="filter-row">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Stationery</button>
+      <button class="filter-btn">Home</button>
+      <button class="filter-btn">Accessories</button>
+    </div>
+  </div>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-img">N<div class="product-badge">New</div></div>
+      <div class="product-type">Notebook</div>
+      <div class="product-name">The Standard Journal</div>
+      <div class="product-price">₹649</div>
+      <button class="product-add" onclick="addToCart()">Add to cart</button>
+    </div>
+    <div class="product-card">
+      <div class="product-img">P<div class="product-badge sale">Sale</div></div>
+      <div class="product-type">Writing</div>
+      <div class="product-name">Brass Ballpoint Pen</div>
+      <div class="product-price"><span class="price-original">₹1,299</span><span class="price-sale">₹899</span></div>
+      <button class="product-add" onclick="addToCart()">Add to cart</button>
+    </div>
+    <div class="product-card">
+      <div class="product-img">W</div>
+      <div class="product-type">Home</div>
+      <div class="product-name">Ceramic Pour-Over</div>
+      <div class="product-price">₹1,849</div>
+      <button class="product-add" onclick="addToCart()">Add to cart</button>
+    </div>
+    <div class="product-card">
+      <div class="product-img">C<div class="product-badge">New</div></div>
+      <div class="product-type">Accessories</div>
+      <div class="product-name">Leather Card Wallet</div>
+      <div class="product-price">₹999</div>
+      <button class="product-add" onclick="addToCart()">Add to cart</button>
+    </div>
+    <div class="product-card">
+      <div class="product-img">D</div>
+      <div class="product-type">Stationery</div>
+      <div class="product-name">Desk Organiser</div>
+      <div class="product-price">₹2,199</div>
+      <button class="product-add" onclick="addToCart()">Add to cart</button>
+    </div>
+    <div class="product-card">
+      <div class="product-img">T</div>
+      <div class="product-type">Home</div>
+      <div class="product-name">Linen Tote Bag</div>
+      <div class="product-price">₹749</div>
+      <button class="product-add" onclick="addToCart()">Add to cart</button>
+    </div>
+  </div>
+</div>
+
+<div class="features-strip">
+  <div class="strip-item"><div class="strip-icon">◎</div><div class="strip-title">Free shipping</div><div class="strip-desc">On all orders over ₹999</div></div>
+  <div class="strip-item"><div class="strip-icon">↺</div><div class="strip-title">Easy returns</div><div class="strip-desc">30-day hassle-free policy</div></div>
+  <div class="strip-item"><div class="strip-icon">♦</div><div class="strip-title">Quality goods</div><div class="strip-desc">Curated for lasting use</div></div>
+  <div class="strip-item"><div class="strip-icon">✉</div><div class="strip-title">Support</div><div class="strip-desc">Responsive customer care</div></div>
+</div>
+
+<div class="testimonial">
+  <div class="stars">★★★★★</div>
+  <div class="testimonial-quote">"Everything I've bought from Kern & Co has become a permanent fixture in my daily life. The quality is genuinely rare at this price."</div>
+  <div class="testimonial-author">Ananya R. — Verified buyer</div>
+</div>
+
+<div class="newsletter">
+  <div class="newsletter-title">Join the circle</div>
+  <p class="newsletter-sub">New drops, restocks, and essays on design — straight to your inbox.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com"/>
+    <button>Subscribe</button>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-brand">Kern & Co</div>
+    <p class="footer-desc">Thoughtfully designed everyday objects for people who care about the things they use.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Shop</h4>
+    <ul>
+      <li><a href="#">New arrivals</a></li>
+      <li><a href="#">Stationery</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Accessories</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Info</h4>
+    <ul>
+      <li><a href="#">Our story</a></li>
+      <li><a href="#">Journal</a></li>
+      <li><a href="#">Stockists</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Help</h4>
+    <ul>
+      <li><a href="#">Shipping</a></li>
+      <li><a href="#">Returns</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Kern & Co</span>
+  <span>Privacy · Terms</span>
+</div>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <div class="cart-title">Your cart</div>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">Your cart is empty.<br/>Add something beautiful.</div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+    <button class="checkout-btn">Proceed to checkout</button>
+  </div>
+</div>
+
+<script>
+let cartItems=0,cartValue=0;
+function toggleCart(){
+  document.getElementById('cartPanel').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
+function addToCart(){
+  cartItems++;cartValue+=Math.floor(Math.random()*1000+499);
+  document.getElementById('cartCount').textContent=cartItems;
+  document.getElementById('cartTotal').textContent='₹'+cartValue.toLocaleString('en-IN');
+  document.getElementById('cartBody').innerHTML='<div style="text-align:left;width:100%">'+cartItems+' item'+(cartItems>1?'s':'')+' in your cart.</div>';
+  toggleCart();
+}
+document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')})});
+</script>
+
+</body>
+</html>
