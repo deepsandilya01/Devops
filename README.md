@@ -37,8 +37,6 @@ You can create an account, login, connect GitHub, and deploy projects.
 
 ### 🔗 GitHub Repository
 
-https://github.com/Aryan-hatake/Deployment_Panel
-
 This repo contains the full code of QuickLive.
 
 It has two main parts:
