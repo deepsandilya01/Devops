@@ -35,7 +35,7 @@ When you open this link, you will see the QuickLive website.
 
 You can create an account, login, connect GitHub, and deploy projects.
 
-### 🔗 GitHub Repository
+### 🔗 GitHub Repository 
 
 This repo contains the full code of QuickLive.
 

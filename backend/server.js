@@ -7,6 +7,7 @@ const server = http.createServer(app);
 
 connectToDB();
 
+
 const port = config.PORT;
 
 initSocket(server);
